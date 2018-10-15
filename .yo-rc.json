@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.imeriemlab.sitecultuel",
+      "nativeLanguage": "ar-ly"
+    },
+    "jhipsterVersion": "5.4.2",
+    "applicationType": "monolith",
+    "baseName": "Cultuel",
+    "packageName": "com.imeriemlab.sitecultuel",
+    "packageFolder": "com/imeriemlab/sitecultuel",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NTNmMzg2MmUxZjkxMGI4YjMzNmQ4ZDZmMmU5ZmZmMTY2NTZjNzE0ZjU2YTAyMjljZWNmZmJkNGJmMzI0M2RjNWQwZDhkMjYyZGIyYTNhNzJhODgxMWVhYzI3MjEzYWI2ZDY2NTAzMzliOTgzMzA3MjIwZDgzYWFiYzViNDFkN2U=",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "ar-ly",
+    "languages": [
+      "ar-ly",
+      "en",
+      "fr"
+    ]
+  }
+}
