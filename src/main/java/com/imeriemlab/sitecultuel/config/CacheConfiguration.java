@@ -47,6 +47,7 @@ public class CacheConfiguration {
             cm.createCache(com.imeriemlab.sitecultuel.domain.Prayer.class.getName(), jcacheConfiguration);
             cm.createCache(com.imeriemlab.sitecultuel.domain.Degrees.class.getName(), jcacheConfiguration);
             cm.createCache(com.imeriemlab.sitecultuel.domain.Methods.class.getName(), jcacheConfiguration);
+            cm.createCache(com.imeriemlab.sitecultuel.domain.Preche.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

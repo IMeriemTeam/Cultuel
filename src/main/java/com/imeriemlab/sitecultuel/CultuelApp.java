@@ -62,6 +62,7 @@ public class CultuelApp {
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);
+        log.debug("hello test khaled");
     }
 
     private static void logApplicationStartup(Environment env) {

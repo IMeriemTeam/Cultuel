@@ -9,6 +9,7 @@ import { CultuelDonsMySuffixModule } from './dons-my-suffix/dons-my-suffix.modul
 import { CultuelPrayerMySuffixModule } from './prayer-my-suffix/prayer-my-suffix.module';
 import { CultuelDegreesMySuffixModule } from './degrees-my-suffix/degrees-my-suffix.module';
 import { CultuelMethodsMySuffixModule } from './methods-my-suffix/methods-my-suffix.module';
+import { CultuelPrecheMySuffixModule } from './preche-my-suffix/preche-my-suffix.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -23,6 +24,7 @@ import { CultuelMethodsMySuffixModule } from './methods-my-suffix/methods-my-suf
         CultuelPrayerMySuffixModule,
         CultuelDegreesMySuffixModule,
         CultuelMethodsMySuffixModule,
+        CultuelPrecheMySuffixModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

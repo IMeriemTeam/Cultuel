@@ -16,6 +16,7 @@
                 "prayerMySuffix": "Prayer",
                 "degreesMySuffix": "Degrees",
                 "methodsMySuffix": "Methods",
+                "precheMySuffix": "Preche",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
