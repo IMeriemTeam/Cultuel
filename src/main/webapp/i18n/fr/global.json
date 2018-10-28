@@ -6,17 +6,7 @@
             "home": "Accueil",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "EntitÃ©s",
-                "regionMySuffix": "Region",
-                "countryMySuffix": "Country",
-                "locationMySuffix": "Location",
-                "departmentMySuffix": "Department",
-                "taskMySuffix": "Task",
-                "donsMySuffix": "Dons",
-                "prayerMySuffix": "Prayer",
-                "degreesMySuffix": "Degrees",
-                "methodsMySuffix": "Methods",
-                "precheMySuffix": "Preche",
+                "main": "Entités",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
