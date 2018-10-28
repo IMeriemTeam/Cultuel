@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
+import { JhiAlertService } from 'ng-jhipster';
 
 import { IDonsMySuffix } from 'app/shared/model/dons-my-suffix.model';
 import { DonsMySuffixService } from './dons-my-suffix.service';
+import { IUser, UserService } from 'app/core';
 
 @Component({
     selector: 'jhi-dons-my-suffix-update',
@@ -14,13 +17,27 @@ export class DonsMySuffixUpdateComponent implements OnInit {
     dons: IDonsMySuffix;
     isSaving: boolean;
 
-    constructor(private donsService: DonsMySuffixService, private activatedRoute: ActivatedRoute) {}
+    users: IUser[];
+    dateDonsDp: any;
+
+    constructor(
+        private jhiAlertService: JhiAlertService,
+        private donsService: DonsMySuffixService,
+        private userService: UserService,
+        private activatedRoute: ActivatedRoute
+    ) {}
 
     ngOnInit() {
         this.isSaving = false;
         this.activatedRoute.data.subscribe(({ dons }) => {
             this.dons = dons;
         });
+        this.userService.query().subscribe(
+            (res: HttpResponse<IUser[]>) => {
+                this.users = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
     }
 
     previousState() {
@@ -47,5 +64,13 @@ export class DonsMySuffixUpdateComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(errorMessage: string) {
+        this.jhiAlertService.error(errorMessage, null, null);
+    }
+
+    trackUserById(index: number, item: IUser) {
+        return item.id;
     }
 }

@@ -40,51 +40,9 @@ entity Preche {
 
 entity Dons {
 	uuid String,
-	don Long
+	don Long,
+	dateDons LocalDate
 }
-
-/**
- * Prayer entity.
- * @author The IMeriem team.
- */
-entity Prayer {
-	sobh String,
-	chorouq String,
-	dohr String,
-	asr String,
-	maghreb String,
-	icha String
-}
-
-/**
- * Degrees entity.
- * @author The IMeriem team.
- */
-entity Degrees {
-	Degree String
-}
-
-/**
- * Methods entity.
- * @author The IMeriem team.
- */
-entity Methods {
-	method String
-}
-
-// relationships
-relationship OneToOne {
-	Prayer{location} to Location
-}
-
-relationship OneToOne {
-	Prayer{method} to Methods
-}
-
-relationship OneToOne {
-	Prayer{degree} to Degrees
-}
-
 relationship OneToOne {
 	Country{region} to Region
 }
@@ -105,9 +63,9 @@ relationship OneToOne {
 //	Department{User} to	User
 //}
 
-//relationship OneToMany {
-//	User{dons} to Dons
-//}
+relationship ManyToOne {
+	Dons{dons} to User
+}
 
 //relationship ManyToOne {
 //	User{manager} to User

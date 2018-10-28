@@ -17,7 +17,9 @@
                 "title": "Dons"
             },
             "uuid": "Uuid",
-            "don": "Don"
+            "don": "Don",
+            "dateDons": "Date Dons",
+            "dons": "Dons"
         }
     }
 }

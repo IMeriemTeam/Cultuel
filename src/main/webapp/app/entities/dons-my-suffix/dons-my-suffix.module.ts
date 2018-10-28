@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { CultuelSharedModule } from 'app/shared';
+import { CultuelAdminModule } from 'app/admin/admin.module';
 import {
     DonsMySuffixComponent,
     DonsMySuffixDetailComponent,
@@ -15,7 +16,7 @@ import {
 const ENTITY_STATES = [...donsRoute, ...donsPopupRoute];
 
 @NgModule({
-    imports: [CultuelSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [CultuelSharedModule, CultuelAdminModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         DonsMySuffixComponent,
         DonsMySuffixDetailComponent,

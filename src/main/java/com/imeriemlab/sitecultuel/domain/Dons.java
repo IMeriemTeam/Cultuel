@@ -1,11 +1,13 @@
 package com.imeriemlab.sitecultuel.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -27,6 +29,13 @@ public class Dons implements Serializable {
 
     @Column(name = "don")
     private Long don;
+
+    @Column(name = "date_dons")
+    private LocalDate dateDons;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private User dons;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -62,6 +71,32 @@ public class Dons implements Serializable {
     public void setDon(Long don) {
         this.don = don;
     }
+
+    public LocalDate getDateDons() {
+        return dateDons;
+    }
+
+    public Dons dateDons(LocalDate dateDons) {
+        this.dateDons = dateDons;
+        return this;
+    }
+
+    public void setDateDons(LocalDate dateDons) {
+        this.dateDons = dateDons;
+    }
+
+    public User getDons() {
+        return dons;
+    }
+
+    public Dons dons(User user) {
+        this.dons = user;
+        return this;
+    }
+
+    public void setDons(User user) {
+        this.dons = user;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -90,6 +125,7 @@ public class Dons implements Serializable {
             "id=" + getId() +
             ", uuid='" + getUuid() + "'" +
             ", don=" + getDon() +
+            ", dateDons='" + getDateDons() + "'" +
             "}";
     }
 }

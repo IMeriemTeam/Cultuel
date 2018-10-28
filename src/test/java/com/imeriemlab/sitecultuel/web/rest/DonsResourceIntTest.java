@@ -22,6 +22,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 
@@ -45,6 +47,9 @@ public class DonsResourceIntTest {
 
     private static final Long DEFAULT_DON = 1L;
     private static final Long UPDATED_DON = 2L;
+
+    private static final LocalDate DEFAULT_DATE_DONS = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_DONS = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private DonsRepository donsRepository;
@@ -88,7 +93,8 @@ public class DonsResourceIntTest {
     public static Dons createEntity(EntityManager em) {
         Dons dons = new Dons()
             .uuid(DEFAULT_UUID)
-            .don(DEFAULT_DON);
+            .don(DEFAULT_DON)
+            .dateDons(DEFAULT_DATE_DONS);
         return dons;
     }
 
@@ -114,6 +120,7 @@ public class DonsResourceIntTest {
         Dons testDons = donsList.get(donsList.size() - 1);
         assertThat(testDons.getUuid()).isEqualTo(DEFAULT_UUID);
         assertThat(testDons.getDon()).isEqualTo(DEFAULT_DON);
+        assertThat(testDons.getDateDons()).isEqualTo(DEFAULT_DATE_DONS);
     }
 
     @Test
@@ -147,7 +154,8 @@ public class DonsResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(dons.getId().intValue())))
             .andExpect(jsonPath("$.[*].uuid").value(hasItem(DEFAULT_UUID.toString())))
-            .andExpect(jsonPath("$.[*].don").value(hasItem(DEFAULT_DON.intValue())));
+            .andExpect(jsonPath("$.[*].don").value(hasItem(DEFAULT_DON.intValue())))
+            .andExpect(jsonPath("$.[*].dateDons").value(hasItem(DEFAULT_DATE_DONS.toString())));
     }
     
     @Test
@@ -162,7 +170,8 @@ public class DonsResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(dons.getId().intValue()))
             .andExpect(jsonPath("$.uuid").value(DEFAULT_UUID.toString()))
-            .andExpect(jsonPath("$.don").value(DEFAULT_DON.intValue()));
+            .andExpect(jsonPath("$.don").value(DEFAULT_DON.intValue()))
+            .andExpect(jsonPath("$.dateDons").value(DEFAULT_DATE_DONS.toString()));
     }
 
     @Test
@@ -187,7 +196,8 @@ public class DonsResourceIntTest {
         em.detach(updatedDons);
         updatedDons
             .uuid(UPDATED_UUID)
-            .don(UPDATED_DON);
+            .don(UPDATED_DON)
+            .dateDons(UPDATED_DATE_DONS);
 
         restDonsMockMvc.perform(put("/api/dons")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -200,6 +210,7 @@ public class DonsResourceIntTest {
         Dons testDons = donsList.get(donsList.size() - 1);
         assertThat(testDons.getUuid()).isEqualTo(UPDATED_UUID);
         assertThat(testDons.getDon()).isEqualTo(UPDATED_DON);
+        assertThat(testDons.getDateDons()).isEqualTo(UPDATED_DATE_DONS);
     }
 
     @Test
