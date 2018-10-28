@@ -1,0 +1,24 @@
+
+{
+    "cultuelApp": {
+        "preche" : {
+            "home": {
+                "title": "Preches",
+                "createLabel": "Create a new Preche",
+                "createOrEditLabel": "Create or edit a Preche"
+            },
+            "created": "A new Preche is created with identifier {{ param }}",
+            "updated": "A Preche is updated with identifier {{ param }}",
+            "deleted": "A Preche is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Preche {{ id }}?"
+            },
+            "detail": {
+                "title": "Preche"
+            },
+            "title": "Title",
+            "imam": "Imam",
+            "date": "Date"
+        }
+    }
+}

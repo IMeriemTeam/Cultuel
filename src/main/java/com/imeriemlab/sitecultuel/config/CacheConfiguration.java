@@ -38,6 +38,8 @@ public class CacheConfiguration {
             cm.createCache(com.imeriemlab.sitecultuel.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.imeriemlab.sitecultuel.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.imeriemlab.sitecultuel.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+           cm.createCache(com.imeriemlab.sitecultuel.domain.Preche.class.getName(), jcacheConfiguration);
+           cm.createCache(com.imeriemlab.sitecultuel.domain.Dons.class.getName(), jcacheConfiguration);
            // jhipster-needle-ehcache-add-entry
         };
     }
