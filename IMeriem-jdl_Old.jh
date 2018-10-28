@@ -29,20 +29,74 @@ entity Task {
 }
 
 /**
- * Task entity.
- * @author The IMeriem team.
+ * The User entity.
  */
-entity Preche {
-	title String,
-	imam String,
-    date LocalDate
+//entity User {
+	/**
+	* The firstname attribute.
+	*/
+//	firstName String,
+//	lastName String,
+//	roles Roles,
+//	email String,
+//	phoneNumber String
+//}
+
+enum Roles {
+	SYSADMIN, ADMIN, SUBSCRIBER, EDITOR
+}
+
+enum Language {
+    FRENCH, ENGLISH, ARABE
 }
 
 entity Dons {
 	uuid String,
-	don Long,
-	dateDons LocalDate
+	don Long
 }
+
+/**
+ * Prayer entity.
+ * @author The IMeriem team.
+ */
+entity Prayer {
+	sobh String,
+	chorouq String,
+	dohr String,
+	asr String,
+	maghreb String,
+	icha String
+}
+
+/**
+ * Degrees entity.
+ * @author The IMeriem team.
+ */
+entity Degrees {
+	Degree String
+}
+
+/**
+ * Methods entity.
+ * @author The IMeriem team.
+ */
+entity Methods {
+	method String
+}
+
+// relationships
+relationship OneToOne {
+	Prayer{location} to Location
+}
+
+relationship OneToOne {
+	Prayer{method} to Methods
+}
+
+relationship OneToOne {
+	Prayer{degree} to Degrees
+}
+
 relationship OneToOne {
 	Country{region} to Region
 }
@@ -63,9 +117,11 @@ relationship OneToOne {
 //	Department{User} to	User
 //}
 
-relationship ManyToOne {
-	Dons{dons} to User
-}
+
+//relationship OneToMany {
+//	User{dons} to Dons
+//}
+
 
 //relationship ManyToOne {
 //	User{manager} to User
