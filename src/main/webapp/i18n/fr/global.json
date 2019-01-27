@@ -1,14 +1,15 @@
 {
     "global": {
         "title": "Cultuel",
-        "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
+        "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre Ã  jour votre navigateur</a> pour une meilleure expÃ©rience.",
         "menu": {
             "home": "Accueil",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
-                "main": "Entit�s",
+                "main": "Entitées",
                 "precheMySuffix": "Preche",
                 "donsMySuffix": "Dons",
+                "prayerMySuffix": "Prayer",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -24,13 +25,13 @@
                 "main": "Administration",
                 "userManagement": "Gestion des utilisateurs",
                 "tracker": "Suivi des utilisateurs",
-                "metrics": "Métriques",
+                "metrics": "MÃ©triques",
                 "health": "Diagnostics",
                 "configuration": "Configuration",
                 "logs": "Logs",
                 "audits": "Audits",
                 "apidocs": "API",
-                "database": "Base de données",
+                "database": "Base de donnÃ©es",
                 "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
             },
             "language": "Langue"
@@ -66,18 +67,18 @@
                 "newpassword": {
                     "required": "Votre mot de passe est requis.",
                     "minlength": "Votre mot de passe doit comporter au moins 5 caractères.",
-                    "maxlength": "Votre mot de passe ne doit pas comporter plus de 50 caractères.",
+                    "maxlength": "Votre mot de passe ne doit pas comporter plus de 50 caractÃ¨res.",
                     "strength": "Robustesse du mot de passe :"
                 },
                 "confirmpassword": {
                     "required": "Votre confirmation du mot de passe est requise.",
                     "minlength": "Votre confirmation du mot de passe doit comporter au moins 5 caractères.",
-                    "maxlength": "Votre confirmation du mot de passe ne doit pas comporter plus de 50 caractères."
+                    "maxlength": "Votre confirmation du mot de passe ne doit pas comporter plus de 50 caractÃ¨res."
                 },
                 "email": {
                     "required": "Votre email est requis.",
                     "minlength": "Votre email doit comporter au moins 5 caractères.",
-                    "maxlength": "Votre email ne doit pas comporter plus de 50 caractères.",
+                    "maxlength": "Votre email ne doit pas comporter plus de 50 caractÃ¨res.",
                     "invalid": "Votre email n'est pas valide."
                 }
             }
@@ -111,14 +112,14 @@
         },
         "validation": {
             "required": "Ce champ est obligatoire.",
-            "minlength": "Ce champ doit faire au minimum {{min}} caractères.",
-            "maxlength": "Ce champ doit faire moins de {{max}} caractères.",
-            "min": "Ce champ doit être supérieur à {{min}}.",
-            "max": "Ce champ doit être inférieur à {{max}}.",
-            "minbytes": "Ce champ doit être supérieur à {{min}} bytes.",
-            "maxbytes": "Ce champ doit être inférieur à {{max}} bytes.",
+            "minlength": "Ce champ doit faire au minimum {{min}} caractÃ¨res.",
+            "maxlength": "Ce champ doit faire moins de {{max}} caractÃ¨res.",
+            "min": "Ce champ doit Ãªtre supérieur Ã  {{min}}.",
+            "max": "Ce champ doit Ãªtre inférieur Ã  {{max}}.",
+            "minbytes": "Ce champ doit Ãªtre supérieur Ã  {{min}} bytes.",
+            "maxbytes": "Ce champ doit Ãªtre inférieur Ã  {{max}} bytes.",
             "pattern": "Ce champ doit suivre l'expression régulière {{pattern}}.",
-            "number": "Ce champ doit être un nombre.",
+            "number": "Ce champ doit Ãªtre un nombre.",
             "datetimelocal": "Ce champ doit être une date et une heure."
         }
     },
@@ -126,11 +127,11 @@
         "internalServerError": "Erreur interne du serveur",
         "server.not.reachable": "Serveur inaccessible",
         "url.not.found": "Non trouvé",
-        "NotNull": "Le champ {{fieldName}} ne peut pas être vide !",
-        "Size": "Le champ {{fieldName}} ne respecte pas les critères minimum et maximum !",
-        "userexists": "Login déjà utilisé !",
-        "emailexists": "Email déjà utilisé !",
-        "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'ID !",
+        "NotNull": "Le champ {{fieldName}} ne peut pas Ãªtre vide !",
+        "Size": "Le champ {{fieldName}} ne respecte pas les critÃ¨res minimum et maximum !",
+        "userexists": "Login déjà  utilisé !",
+        "emailexists": "Email déjà  utilisé !",
+        "idexists": "Une nouvelle entitée {{ entityName }} ne peut pas avoir d'ID !",
         "idnull": "Invalid ID"
     },
     "footer": "Ceci est votre pied de page"

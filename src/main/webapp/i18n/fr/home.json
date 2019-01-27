@@ -3,9 +3,9 @@
         "title": "Bienvenue, Java Hipster !",
         "subtitle": "Ceci est votre page d'accueil",
         "logged": {
-            "message": "Vous êtes connecté en tant que \"{{username}}\"."
+            "message": "Vous etes connecte en tant que \"{{username}}\"."
         },
-        "question": "Si vous avez des questions à propos de JHipster :",
+        "question": "Si vous avez des questions � propos de JHipster :",
         "link": {
             "homepage": "Page d'accueil de JHipster",
             "stackoverflow": "JHipster sur Stack Overflow",
@@ -13,7 +13,7 @@
             "chat": "JHipster public chat room",
             "follow": "Suivez @java_hipster sur Twitter"
         },
-        "like": "Si vous aimez JHipster, donnez nous une étoile sur",
+        "like": "Si vous aimez JHipster, donnez nous une �toile sur",
         "github": "GitHub "
     }
 }

@@ -2,8 +2,8 @@
     "userManagement": {
         "home": {
             "title": "Utilisateurs",
-            "createLabel": "Créer un nouvel utilisateur",
-            "createOrEditLabel": "Créer ou éditer un utilisateur"
+            "createLabel": "Cr�er un nouvel utilisateur",
+            "createOrEditLabel": "Cr�er ou éditer un utilisateur"
         },
         "created": "L'utilisateur {{ param }} a été créé.",
         "updated": "L'utilisateur {{ param }} a été mis à jour.",
