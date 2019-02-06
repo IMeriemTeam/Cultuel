@@ -8,19 +8,13 @@ import { CookieModule } from 'ngx-cookie';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-    imports: [
-        NgbModule.forRoot(),
-        NgJhipsterModule.forRoot({
-            // set below to true to make alerts look like toast
-            alertAsToast: false,
-            alertTimeout: 5000,
-            i18nEnabled: true,
-            defaultI18nLang: 'fr'
-        }),
-        InfiniteScrollModule,
-        CookieModule.forRoot(),
-        FontAwesomeModule
-    ],
+    imports: [NgbModule.forRoot(), InfiniteScrollModule, CookieModule.forRoot(), FontAwesomeModule],
     exports: [FormsModule, CommonModule, NgbModule, NgJhipsterModule, InfiniteScrollModule, FontAwesomeModule]
 })
-export class CultuelSharedLibsModule {}
+export class CultuelSharedLibsModule {
+    static forRoot() {
+        return {
+            ngModule: CultuelSharedLibsModule
+        };
+    }
+}

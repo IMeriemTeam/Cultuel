@@ -1,7 +1,6 @@
-
 {
     "cultuelApp": {
-        "preche" : {
+        "preche": {
             "home": {
                 "title": "Preches",
                 "createLabel": "Create a new Preche",

@@ -12,4 +12,10 @@ import { CultuelSharedLibsModule, CultuelSharedCommonModule, JhiLoginModalCompon
     exports: [CultuelSharedCommonModule, JhiLoginModalComponent, HasAnyAuthorityDirective],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class CultuelSharedModule {}
+export class CultuelSharedModule {
+    static forRoot() {
+        return {
+            ngModule: CultuelSharedModule
+        };
+    }
+}

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { JhiAlertService } from 'ng-jhipster';
-
 import { IDonsMySuffix } from 'app/shared/model/dons-my-suffix.model';
 import { DonsMySuffixService } from './dons-my-suffix.service';
 import { IUser, UserService } from 'app/core';
@@ -21,10 +21,10 @@ export class DonsMySuffixUpdateComponent implements OnInit {
     dateDonsDp: any;
 
     constructor(
-        private jhiAlertService: JhiAlertService,
-        private donsService: DonsMySuffixService,
-        private userService: UserService,
-        private activatedRoute: ActivatedRoute
+        protected jhiAlertService: JhiAlertService,
+        protected donsService: DonsMySuffixService,
+        protected userService: UserService,
+        protected activatedRoute: ActivatedRoute
     ) {}
 
     ngOnInit() {
@@ -32,12 +32,13 @@ export class DonsMySuffixUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ dons }) => {
             this.dons = dons;
         });
-        this.userService.query().subscribe(
-            (res: HttpResponse<IUser[]>) => {
-                this.users = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
+        this.userService
+            .query()
+            .pipe(
+                filter((mayBeOk: HttpResponse<IUser[]>) => mayBeOk.ok),
+                map((response: HttpResponse<IUser[]>) => response.body)
+            )
+            .subscribe((res: IUser[]) => (this.users = res), (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     previousState() {
@@ -53,20 +54,20 @@ export class DonsMySuffixUpdateComponent implements OnInit {
         }
     }
 
-    private subscribeToSaveResponse(result: Observable<HttpResponse<IDonsMySuffix>>) {
+    protected subscribeToSaveResponse(result: Observable<HttpResponse<IDonsMySuffix>>) {
         result.subscribe((res: HttpResponse<IDonsMySuffix>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
     }
 
-    private onSaveSuccess() {
+    protected onSaveSuccess() {
         this.isSaving = false;
         this.previousState();
     }
 
-    private onSaveError() {
+    protected onSaveError() {
         this.isSaving = false;
     }
 
-    private onError(errorMessage: string) {
+    protected onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 

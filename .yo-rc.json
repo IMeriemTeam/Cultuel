@@ -4,7 +4,7 @@
       "packageName": "com.imeriemlab.sitecultuel",
       "nativeLanguage": "ar-ly"
     },
-    "jhipsterVersion": "5.4.2",
+    "jhipsterVersion": "5.8.1",
     "applicationType": "monolith",
     "baseName": "Cultuel",
     "packageName": "com.imeriemlab.sitecultuel",
@@ -35,6 +35,8 @@
       "ar-ly",
       "en",
       "fr"
-    ]
+    ],
+    "entitySuffix": "",
+    "dtoSuffix": "DTO"
   }
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { IDonsMySuffix } from 'app/shared/model/dons-my-suffix.model';
-import { Principal } from 'app/core';
+import { AccountService } from 'app/core';
 import { DonsMySuffixService } from './dons-my-suffix.service';
 
 @Component({
@@ -17,24 +18,30 @@ export class DonsMySuffixComponent implements OnInit, OnDestroy {
     eventSubscriber: Subscription;
 
     constructor(
-        private donsService: DonsMySuffixService,
-        private jhiAlertService: JhiAlertService,
-        private eventManager: JhiEventManager,
-        private principal: Principal
+        protected donsService: DonsMySuffixService,
+        protected jhiAlertService: JhiAlertService,
+        protected eventManager: JhiEventManager,
+        protected accountService: AccountService
     ) {}
 
     loadAll() {
-        this.donsService.query().subscribe(
-            (res: HttpResponse<IDonsMySuffix[]>) => {
-                this.dons = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
+        this.donsService
+            .query()
+            .pipe(
+                filter((res: HttpResponse<IDonsMySuffix[]>) => res.ok),
+                map((res: HttpResponse<IDonsMySuffix[]>) => res.body)
+            )
+            .subscribe(
+                (res: IDonsMySuffix[]) => {
+                    this.dons = res;
+                },
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
     }
 
     ngOnInit() {
         this.loadAll();
-        this.principal.identity().then(account => {
+        this.accountService.identity().then(account => {
             this.currentAccount = account;
         });
         this.registerChangeInDons();
@@ -52,7 +59,7 @@ export class DonsMySuffixComponent implements OnInit, OnDestroy {
         this.eventSubscriber = this.eventManager.subscribe('donsListModification', response => this.loadAll());
     }
 
-    private onError(errorMessage: string) {
+    protected onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 }

@@ -14,9 +14,9 @@ type EntityArrayResponseType = HttpResponse<IDonsMySuffix[]>;
 
 @Injectable({ providedIn: 'root' })
 export class DonsMySuffixService {
-    private resourceUrl = SERVER_API_URL + 'api/dons';
+    public resourceUrl = SERVER_API_URL + 'api/dons';
 
-    constructor(private http: HttpClient) {}
+    constructor(protected http: HttpClient) {}
 
     create(dons: IDonsMySuffix): Observable<EntityResponseType> {
         const copy = this.convertDateFromClient(dons);
@@ -49,22 +49,26 @@ export class DonsMySuffixService {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
     }
 
-    private convertDateFromClient(dons: IDonsMySuffix): IDonsMySuffix {
+    protected convertDateFromClient(dons: IDonsMySuffix): IDonsMySuffix {
         const copy: IDonsMySuffix = Object.assign({}, dons, {
             dateDons: dons.dateDons != null && dons.dateDons.isValid() ? dons.dateDons.format(DATE_FORMAT) : null
         });
         return copy;
     }
 
-    private convertDateFromServer(res: EntityResponseType): EntityResponseType {
-        res.body.dateDons = res.body.dateDons != null ? moment(res.body.dateDons) : null;
+    protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
+        if (res.body) {
+            res.body.dateDons = res.body.dateDons != null ? moment(res.body.dateDons) : null;
+        }
         return res;
     }
 
-    private convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
-        res.body.forEach((dons: IDonsMySuffix) => {
-            dons.dateDons = dons.dateDons != null ? moment(dons.dateDons) : null;
-        });
+    protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+        if (res.body) {
+            res.body.forEach((dons: IDonsMySuffix) => {
+                dons.dateDons = dons.dateDons != null ? moment(dons.dateDons) : null;
+            });
+        }
         return res;
     }
 }

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { UserRouteAccessService } from 'app/core';
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { PrecheMySuffix } from 'app/shared/model/preche-my-suffix.model';
 import { PrecheMySuffixService } from './preche-my-suffix.service';
 import { PrecheMySuffixComponent } from './preche-my-suffix.component';
@@ -16,10 +16,13 @@ import { IPrecheMySuffix } from 'app/shared/model/preche-my-suffix.model';
 export class PrecheMySuffixResolve implements Resolve<IPrecheMySuffix> {
     constructor(private service: PrecheMySuffixService) {}
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IPrecheMySuffix> {
         const id = route.params['id'] ? route.params['id'] : null;
         if (id) {
-            return this.service.find(id).pipe(map((preche: HttpResponse<PrecheMySuffix>) => preche.body));
+            return this.service.find(id).pipe(
+                filter((response: HttpResponse<PrecheMySuffix>) => response.ok),
+                map((preche: HttpResponse<PrecheMySuffix>) => preche.body)
+            );
         }
         return of(new PrecheMySuffix());
     }
@@ -27,7 +30,7 @@ export class PrecheMySuffixResolve implements Resolve<IPrecheMySuffix> {
 
 export const precheRoute: Routes = [
     {
-        path: 'preche-my-suffix',
+        path: '',
         component: PrecheMySuffixComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -36,7 +39,7 @@ export const precheRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'preche-my-suffix/:id/view',
+        path: ':id/view',
         component: PrecheMySuffixDetailComponent,
         resolve: {
             preche: PrecheMySuffixResolve
@@ -48,7 +51,7 @@ export const precheRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'preche-my-suffix/new',
+        path: 'new',
         component: PrecheMySuffixUpdateComponent,
         resolve: {
             preche: PrecheMySuffixResolve
@@ -60,7 +63,7 @@ export const precheRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'preche-my-suffix/:id/edit',
+        path: ':id/edit',
         component: PrecheMySuffixUpdateComponent,
         resolve: {
             preche: PrecheMySuffixResolve
@@ -75,7 +78,7 @@ export const precheRoute: Routes = [
 
 export const prechePopupRoute: Routes = [
     {
-        path: 'preche-my-suffix/:id/delete',
+        path: ':id/delete',
         component: PrecheMySuffixDeletePopupComponent,
         resolve: {
             preche: PrecheMySuffixResolve

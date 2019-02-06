@@ -1,5 +1,4 @@
 package com.imeriemlab.sitecultuel.service.dto;
-
 import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
@@ -14,6 +13,7 @@ public class DonsDTO implements Serializable {
     private Long don;
 
     private LocalDate dateDons;
+
 
     private Long donsUserId;
 

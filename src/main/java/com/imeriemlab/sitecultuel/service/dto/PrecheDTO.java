@@ -1,5 +1,5 @@
 package com.imeriemlab.sitecultuel.service.dto;
-
+import io.swagger.annotations.ApiModel;
 import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
@@ -7,6 +7,7 @@ import java.util.Objects;
 /**
  * A DTO for the Preche entity.
  */
+@ApiModel(description = "Task entity. @author The IMeriem team.")
 public class PrecheDTO implements Serializable {
 
     private Long id;
@@ -16,6 +17,7 @@ public class PrecheDTO implements Serializable {
     private String imam;
 
     private LocalDate date;
+
 
     public Long getId() {
         return id;

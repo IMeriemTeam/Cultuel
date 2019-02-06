@@ -14,7 +14,11 @@ import { PrecheMySuffixService } from './preche-my-suffix.service';
 export class PrecheMySuffixDeleteDialogComponent {
     preche: IPrecheMySuffix;
 
-    constructor(private precheService: PrecheMySuffixService, public activeModal: NgbActiveModal, private eventManager: JhiEventManager) {}
+    constructor(
+        protected precheService: PrecheMySuffixService,
+        public activeModal: NgbActiveModal,
+        protected eventManager: JhiEventManager
+    ) {}
 
     clear() {
         this.activeModal.dismiss('cancel');
@@ -36,9 +40,9 @@ export class PrecheMySuffixDeleteDialogComponent {
     template: ''
 })
 export class PrecheMySuffixDeletePopupComponent implements OnInit, OnDestroy {
-    private ngbModalRef: NgbModalRef;
+    protected ngbModalRef: NgbModalRef;
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router, private modalService: NgbModal) {}
+    constructor(protected activatedRoute: ActivatedRoute, protected router: Router, protected modalService: NgbModal) {}
 
     ngOnInit() {
         this.activatedRoute.data.subscribe(({ preche }) => {
@@ -50,11 +54,11 @@ export class PrecheMySuffixDeletePopupComponent implements OnInit, OnDestroy {
                 this.ngbModalRef.componentInstance.preche = preche;
                 this.ngbModalRef.result.then(
                     result => {
-                        this.router.navigate([{ outlets: { popup: null } }], { replaceUrl: true, queryParamsHandling: 'merge' });
+                        this.router.navigate(['/preche-my-suffix', { outlets: { popup: null } }]);
                         this.ngbModalRef = null;
                     },
                     reason => {
-                        this.router.navigate([{ outlets: { popup: null } }], { replaceUrl: true, queryParamsHandling: 'merge' });
+                        this.router.navigate(['/preche-my-suffix', { outlets: { popup: null } }]);
                         this.ngbModalRef = null;
                     }
                 );

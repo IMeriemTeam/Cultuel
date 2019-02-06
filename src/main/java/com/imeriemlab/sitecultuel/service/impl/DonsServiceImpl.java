@@ -43,7 +43,6 @@ public class DonsServiceImpl implements DonsService {
     @Override
     public DonsDTO save(DonsDTO donsDTO) {
         log.debug("Request to save Dons : {}", donsDTO);
-
         Dons dons = donsMapper.toEntity(donsDTO);
         dons = donsRepository.save(dons);
         return donsMapper.toDto(dons);
@@ -85,7 +84,6 @@ public class DonsServiceImpl implements DonsService {
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Dons : {}", id);
-        donsRepository.deleteById(id);
+        log.debug("Request to delete Dons : {}", id);        donsRepository.deleteById(id);
     }
 }

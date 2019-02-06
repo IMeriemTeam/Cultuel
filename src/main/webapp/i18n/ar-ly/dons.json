@@ -1,7 +1,6 @@
-
 {
     "cultuelApp": {
-        "dons" : {
+        "dons": {
             "home": {
                 "title": "Dons",
                 "createLabel": "Create a new Dons",

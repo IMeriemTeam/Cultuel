@@ -14,9 +14,9 @@ type EntityArrayResponseType = HttpResponse<IPrecheMySuffix[]>;
 
 @Injectable({ providedIn: 'root' })
 export class PrecheMySuffixService {
-    private resourceUrl = SERVER_API_URL + 'api/preches';
+    public resourceUrl = SERVER_API_URL + 'api/preches';
 
-    constructor(private http: HttpClient) {}
+    constructor(protected http: HttpClient) {}
 
     create(preche: IPrecheMySuffix): Observable<EntityResponseType> {
         const copy = this.convertDateFromClient(preche);
@@ -49,22 +49,26 @@ export class PrecheMySuffixService {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
     }
 
-    private convertDateFromClient(preche: IPrecheMySuffix): IPrecheMySuffix {
+    protected convertDateFromClient(preche: IPrecheMySuffix): IPrecheMySuffix {
         const copy: IPrecheMySuffix = Object.assign({}, preche, {
             date: preche.date != null && preche.date.isValid() ? preche.date.format(DATE_FORMAT) : null
         });
         return copy;
     }
 
-    private convertDateFromServer(res: EntityResponseType): EntityResponseType {
-        res.body.date = res.body.date != null ? moment(res.body.date) : null;
+    protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
+        if (res.body) {
+            res.body.date = res.body.date != null ? moment(res.body.date) : null;
+        }
         return res;
     }
 
-    private convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
-        res.body.forEach((preche: IPrecheMySuffix) => {
-            preche.date = preche.date != null ? moment(preche.date) : null;
-        });
+    protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
+        if (res.body) {
+            res.body.forEach((preche: IPrecheMySuffix) => {
+                preche.date = preche.date != null ? moment(preche.date) : null;
+            });
+        }
         return res;
     }
 }

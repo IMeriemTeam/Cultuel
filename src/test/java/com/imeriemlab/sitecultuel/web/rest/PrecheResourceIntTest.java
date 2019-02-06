@@ -22,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
@@ -58,7 +59,7 @@ public class PrecheResourceIntTest {
 
     @Autowired
     private PrecheMapper precheMapper;
-    
+
     @Autowired
     private PrecheService precheService;
 
@@ -74,6 +75,9 @@ public class PrecheResourceIntTest {
     @Autowired
     private EntityManager em;
 
+    @Autowired
+    private Validator validator;
+
     private MockMvc restPrecheMockMvc;
 
     private Preche preche;
@@ -86,7 +90,8 @@ public class PrecheResourceIntTest {
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
             .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
+            .setMessageConverters(jacksonMessageConverter)
+            .setValidator(validator).build();
     }
 
     /**
@@ -248,7 +253,7 @@ public class PrecheResourceIntTest {
 
         int databaseSizeBeforeDelete = precheRepository.findAll().size();
 
-        // Get the preche
+        // Delete the preche
         restPrecheMockMvc.perform(delete("/api/preches/{id}", preche.getId())
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isOk());

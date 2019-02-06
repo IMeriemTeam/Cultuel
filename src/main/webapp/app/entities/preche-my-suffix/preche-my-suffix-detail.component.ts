@@ -10,7 +10,7 @@ import { IPrecheMySuffix } from 'app/shared/model/preche-my-suffix.model';
 export class PrecheMySuffixDetailComponent implements OnInit {
     preche: IPrecheMySuffix;
 
-    constructor(private activatedRoute: ActivatedRoute) {}
+    constructor(protected activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.activatedRoute.data.subscribe(({ preche }) => {

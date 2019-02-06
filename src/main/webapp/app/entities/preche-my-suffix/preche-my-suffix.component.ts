@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { IPrecheMySuffix } from 'app/shared/model/preche-my-suffix.model';
-import { Principal } from 'app/core';
+import { AccountService } from 'app/core';
 import { PrecheMySuffixService } from './preche-my-suffix.service';
 
 @Component({
@@ -17,24 +18,30 @@ export class PrecheMySuffixComponent implements OnInit, OnDestroy {
     eventSubscriber: Subscription;
 
     constructor(
-        private precheService: PrecheMySuffixService,
-        private jhiAlertService: JhiAlertService,
-        private eventManager: JhiEventManager,
-        private principal: Principal
+        protected precheService: PrecheMySuffixService,
+        protected jhiAlertService: JhiAlertService,
+        protected eventManager: JhiEventManager,
+        protected accountService: AccountService
     ) {}
 
     loadAll() {
-        this.precheService.query().subscribe(
-            (res: HttpResponse<IPrecheMySuffix[]>) => {
-                this.preches = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
+        this.precheService
+            .query()
+            .pipe(
+                filter((res: HttpResponse<IPrecheMySuffix[]>) => res.ok),
+                map((res: HttpResponse<IPrecheMySuffix[]>) => res.body)
+            )
+            .subscribe(
+                (res: IPrecheMySuffix[]) => {
+                    this.preches = res;
+                },
+                (res: HttpErrorResponse) => this.onError(res.message)
+            );
     }
 
     ngOnInit() {
         this.loadAll();
-        this.principal.identity().then(account => {
+        this.accountService.identity().then(account => {
             this.currentAccount = account;
         });
         this.registerChangeInPreches();
@@ -52,7 +59,7 @@ export class PrecheMySuffixComponent implements OnInit, OnDestroy {
         this.eventSubscriber = this.eventManager.subscribe('precheListModification', response => this.loadAll());
     }
 
-    private onError(errorMessage: string) {
+    protected onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 }
