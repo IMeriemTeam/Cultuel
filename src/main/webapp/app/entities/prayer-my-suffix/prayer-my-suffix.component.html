@@ -2,32 +2,28 @@
 
 
 <div>
-	<table class="table table-bordered">
+	<table class="table table-striped"  align="center" >
 		<thead>
 			<tr>
-				<td>Date</td>
-				<td>Fajr</td>
-				<td>Sunrise</td>
-				<td>Dhuhr</td>
-				<td>Asr</td>
-				<td>Maghrib</td>
-				<td>Isha</td>
+				<th>Date</th>
+				<th>Fajr</th>
+				<th>Sunrise</th>
+				<th>Dhuhr</th>
+				<th>Asr</th>
+				<th>Maghrib</th>
+				<th>Isha</th>
 			</tr>
 		</thead>
 		<tbody>
-			<div *ngFor="let pr of prayers.data">
-				<tr>				
-					<div *ngFor="let pr of prayers.data">
-					<td>{{ pr.date.readable }}</td>
-						<td>{{ pr.timings.Fajr }}</td>
-						<td>{{ pr.timings.Sunrise }}</td>
-						<td>{{ pr.timings.Dhuhr }}</td>
-						<td>{{ pr.timings.Asr }}</td>
-						<td>{{ pr.timings.Maghrib }}</td>
-						<td>{{ pr.timings.Isha }}</td>
-					</div>
-				</tr>
-			</div>
+			<tr *ngFor="let pr of prayers?.data">
+				<td>{{ pr.date.readable }}</td>
+				<td>{{ pr.timings.Fajr }}</td>
+				<td>{{ pr.timings.Sunrise }}</td>
+				<td>{{ pr.timings.Dhuhr }}</td>
+				<td>{{ pr.timings.Asr }}</td>
+				<td>{{ pr.timings.Maghrib }}</td>
+				<td>{{ pr.timings.Isha }}</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
