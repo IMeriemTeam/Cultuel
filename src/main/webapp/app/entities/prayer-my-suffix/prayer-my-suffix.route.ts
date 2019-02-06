@@ -5,7 +5,7 @@ import { PrayerMySuffixComponent } from './prayer-my-suffix.component';
 
 export const prayerRoute: Routes = [
     {
-        path: 'prayer-my-suffix',
+        path: '',
         component: PrayerMySuffixComponent,
         data: {
             authorities: ['ROLE_USER'],

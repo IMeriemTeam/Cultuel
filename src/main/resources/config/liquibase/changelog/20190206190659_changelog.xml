@@ -1,0 +1,92 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="baatik (generated)" id="1549480084751-1">
+        <createTable tableName="preche">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="prechePK"/>
+            </column>
+            <column name="jhi_date" type="TINYBLOB"/>
+            <column name="imam" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-2">
+        <addColumn tableName="dons">
+            <column name="date_dons" type="tinyblob"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-3">
+        <addColumn tableName="dons">
+            <column name="dons_user_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-4">
+        <addForeignKeyConstraint baseColumnNames="dons_user_id" baseTableName="dons" constraintName="FKhnrjtvegg7kjkgyiwfny02m6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-5">
+        <dropForeignKeyConstraint baseTableName="country" constraintName="fk_country_region_id"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-6">
+        <dropForeignKeyConstraint baseTableName="department" constraintName="fk_department_location_id"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-7">
+        <dropForeignKeyConstraint baseTableName="location" constraintName="fk_location_country_id"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-8">
+        <dropForeignKeyConstraint baseTableName="prayer" constraintName="fk_prayer_degree_id"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-9">
+        <dropForeignKeyConstraint baseTableName="prayer" constraintName="fk_prayer_location_id"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-10">
+        <dropForeignKeyConstraint baseTableName="prayer" constraintName="fk_prayer_method_id"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-11">
+        <dropUniqueConstraint constraintName="ux_country_region_id" tableName="country"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-12">
+        <dropUniqueConstraint constraintName="ux_department_location_id" tableName="department"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-13">
+        <dropUniqueConstraint constraintName="ux_location_country_id" tableName="location"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-14">
+        <dropUniqueConstraint constraintName="ux_prayer_degree_id" tableName="prayer"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-15">
+        <dropUniqueConstraint constraintName="ux_prayer_location_id" tableName="prayer"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-16">
+        <dropUniqueConstraint constraintName="ux_prayer_method_id" tableName="prayer"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-17">
+        <dropTable tableName="country"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-18">
+        <dropTable tableName="degrees"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-19">
+        <dropTable tableName="department"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-20">
+        <dropTable tableName="location"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-21">
+        <dropTable tableName="methods"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-22">
+        <dropTable tableName="prayer"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-23">
+        <dropTable tableName="region"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-24">
+        <dropTable tableName="task"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-25">
+        <dropColumn columnName="uuid" tableName="dons"/>
+    </changeSet>
+    <changeSet author="baatik (generated)" id="1549480084751-26">
+        <dropNotNullConstraint columnDataType="blob" columnName="created_date" tableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>
