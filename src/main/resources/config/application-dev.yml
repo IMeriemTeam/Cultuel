@@ -32,13 +32,15 @@ spring:
         livereload:
             enabled: false # we use Webpack dev server + BrowserSync for livereload
     jackson:
-        serialization.indent_output: true
+        serialization:
+            indent-output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/Cultuel?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3306/Cultuel?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
         username: root
         password:
         hikari:
+            poolName: Hikari
             auto-commit: false
             data-source-properties:
                 cachePrepStmts: true
@@ -95,7 +97,7 @@ jhipster:
     security:
         authentication:
             jwt:
-                # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
+                # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
                 base64-secret: NTNmMzg2MmUxZjkxMGI4YjMzNmQ4ZDZmMmU5ZmZmMTY2NTZjNzE0ZjU2YTAyMjljZWNmZmJkNGJmMzI0M2RjNWQwZDhkMjYyZGIyYTNhNzJhODgxMWVhYzI3MjEzYWI2ZDY2NTAzMzliOTgzMzA3MjIwZDgzYWFiYzViNDFkN2U=
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
@@ -103,10 +105,8 @@ jhipster:
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: Cultuel@localhost
         base-url: http://127.0.0.1:8080
-    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
-        jmx:
-            enabled: true
-        logs: # Reports Dropwizard metrics in the logs
+    metrics:
+        logs: # Reports metrics in the logs
             enabled: false
             report-frequency: 60 # in seconds
     logging:

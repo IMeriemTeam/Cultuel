@@ -10,7 +10,7 @@ import { IDonsMySuffix } from 'app/shared/model/dons-my-suffix.model';
 export class DonsMySuffixDetailComponent implements OnInit {
     dons: IDonsMySuffix;
 
-    constructor(private activatedRoute: ActivatedRoute) {}
+    constructor(protected activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.activatedRoute.data.subscribe(({ dons }) => {

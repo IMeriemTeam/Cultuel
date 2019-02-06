@@ -43,7 +43,6 @@ public class PrecheServiceImpl implements PrecheService {
     @Override
     public PrecheDTO save(PrecheDTO precheDTO) {
         log.debug("Request to save Preche : {}", precheDTO);
-
         Preche preche = precheMapper.toEntity(precheDTO);
         preche = precheRepository.save(preche);
         return precheMapper.toDto(preche);
@@ -85,7 +84,6 @@ public class PrecheServiceImpl implements PrecheService {
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Preche : {}", id);
-        precheRepository.deleteById(id);
+        log.debug("Request to delete Preche : {}", id);        precheRepository.deleteById(id);
     }
 }

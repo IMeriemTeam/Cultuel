@@ -1,6 +1,4 @@
 package com.imeriemlab.sitecultuel.web.rest;
-
-import com.codahale.metrics.annotation.Timed;
 import com.imeriemlab.sitecultuel.service.DonsService;
 import com.imeriemlab.sitecultuel.web.rest.errors.BadRequestAlertException;
 import com.imeriemlab.sitecultuel.web.rest.util.HeaderUtil;
@@ -42,7 +40,6 @@ public class DonsResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/dons")
-    @Timed
     public ResponseEntity<DonsDTO> createDons(@RequestBody DonsDTO donsDTO) throws URISyntaxException {
         log.debug("REST request to save Dons : {}", donsDTO);
         if (donsDTO.getId() != null) {
@@ -64,7 +61,6 @@ public class DonsResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/dons")
-    @Timed
     public ResponseEntity<DonsDTO> updateDons(@RequestBody DonsDTO donsDTO) throws URISyntaxException {
         log.debug("REST request to update Dons : {}", donsDTO);
         if (donsDTO.getId() == null) {
@@ -82,7 +78,6 @@ public class DonsResource {
      * @return the ResponseEntity with status 200 (OK) and the list of dons in body
      */
     @GetMapping("/dons")
-    @Timed
     public List<DonsDTO> getAllDons() {
         log.debug("REST request to get all Dons");
         return donsService.findAll();
@@ -95,7 +90,6 @@ public class DonsResource {
      * @return the ResponseEntity with status 200 (OK) and with body the donsDTO, or with status 404 (Not Found)
      */
     @GetMapping("/dons/{id}")
-    @Timed
     public ResponseEntity<DonsDTO> getDons(@PathVariable Long id) {
         log.debug("REST request to get Dons : {}", id);
         Optional<DonsDTO> donsDTO = donsService.findOne(id);
@@ -109,7 +103,6 @@ public class DonsResource {
      * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/dons/{id}")
-    @Timed
     public ResponseEntity<Void> deleteDons(@PathVariable Long id) {
         log.debug("REST request to delete Dons : {}", id);
         donsService.delete(id);

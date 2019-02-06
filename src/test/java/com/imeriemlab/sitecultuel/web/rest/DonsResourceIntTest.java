@@ -22,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
@@ -55,7 +56,7 @@ public class DonsResourceIntTest {
 
     @Autowired
     private DonsMapper donsMapper;
-    
+
     @Autowired
     private DonsService donsService;
 
@@ -71,6 +72,9 @@ public class DonsResourceIntTest {
     @Autowired
     private EntityManager em;
 
+    @Autowired
+    private Validator validator;
+
     private MockMvc restDonsMockMvc;
 
     private Dons dons;
@@ -83,7 +87,8 @@ public class DonsResourceIntTest {
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
             .setConversionService(createFormattingConversionService())
-            .setMessageConverters(jacksonMessageConverter).build();
+            .setMessageConverters(jacksonMessageConverter)
+            .setValidator(validator).build();
     }
 
     /**
@@ -239,7 +244,7 @@ public class DonsResourceIntTest {
 
         int databaseSizeBeforeDelete = donsRepository.findAll().size();
 
-        // Get the dons
+        // Delete the dons
         restDonsMockMvc.perform(delete("/api/dons/{id}", dons.getId())
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isOk());

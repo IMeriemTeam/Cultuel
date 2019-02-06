@@ -14,11 +14,10 @@ export class JhiLanguageHelper {
 
     constructor(
         private translateService: TranslateService,
-        // tslint:disable-next-line: no-unused-variable
-        private rootRenderer: RendererFactory2,
         private findLanguageFromKeyPipe: FindLanguageFromKeyPipe,
         private titleService: Title,
-        private router: Router
+        private router: Router,
+        rootRenderer: RendererFactory2
     ) {
         this._language = new BehaviorSubject<string>(this.translateService.currentLang);
         this.renderer = rootRenderer.createRenderer(document.querySelector('html'), null);

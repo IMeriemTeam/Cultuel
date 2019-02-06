@@ -1,7 +1,8 @@
 {
     "global": {
         "title": "Cultuel",
-        "browsehappy": "أنت تستخدم متصفح <strong>قديم</strong> . من فضلك <a href=\"http://browsehappy.com/?locale=en\">قم بتحديث متصفحك</a> لتحسين تجربتك.",
+        "browsehappy":
+            "أنت تستخدم متصفح <strong>قديم</strong> . من فضلك <a href=\"http://browsehappy.com/?locale=en\">قم بتحديث متصفحك</a> لتحسين تجربتك.",
         "menu": {
             "home": "الصفحة الرئيسية",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
@@ -52,7 +53,8 @@
                 "authenticated": {
                     "prefix": "إذا اردت أن ",
                     "link": "تسجل دخولك",
-                    "suffix": ", يمكنك تجربة الحسابات التجريبية:<br/>- المدير (login=\"admin\" و كلمة المرور=\"admin\") <br/>- المستخدم (login=\"user\" و كلمة المرور=\"user\")."
+                    "suffix":
+                        ", يمكنك تجربة الحسابات التجريبية:<br/>- المدير (login=\"admin\" و كلمة المرور=\"admin\") <br/>- المستخدم (login=\"user\" و كلمة المرور=\"user\")."
                 },
                 "register": {
                     "noaccount": "لا تملك حسابا حتى الآن؟",
@@ -86,7 +88,7 @@
             "id": "ID"
         },
         "ribbon": {
-            "dev":"تطوير"
+            "dev": "تطوير"
         },
         "item-count": "يعرض {{first}} - {{second}} من {{total}} البيانات."
     },

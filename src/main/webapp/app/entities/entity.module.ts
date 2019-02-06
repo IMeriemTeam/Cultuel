@@ -1,15 +1,19 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-import { CultuelPrecheMySuffixModule } from './preche-my-suffix/preche-my-suffix.module';
-import { CultuelDonsMySuffixModule } from './dons-my-suffix/dons-my-suffix.module';
-/* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-    // prettier-ignore
     imports: [
-        CultuelPrecheMySuffixModule,
-        CultuelDonsMySuffixModule,
-        /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
+        RouterModule.forChild([
+            {
+                path: 'preche-my-suffix',
+                loadChildren: './preche-my-suffix/preche-my-suffix.module#CultuelPrecheMySuffixModule'
+            },
+            {
+                path: 'dons-my-suffix',
+                loadChildren: './dons-my-suffix/dons-my-suffix.module#CultuelDonsMySuffixModule'
+            }
+            /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
+        ])
     ],
     declarations: [],
     entryComponents: [],

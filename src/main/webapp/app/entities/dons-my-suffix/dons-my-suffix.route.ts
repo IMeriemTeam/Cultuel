@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { UserRouteAccessService } from 'app/core';
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { DonsMySuffix } from 'app/shared/model/dons-my-suffix.model';
 import { DonsMySuffixService } from './dons-my-suffix.service';
 import { DonsMySuffixComponent } from './dons-my-suffix.component';
@@ -16,10 +16,13 @@ import { IDonsMySuffix } from 'app/shared/model/dons-my-suffix.model';
 export class DonsMySuffixResolve implements Resolve<IDonsMySuffix> {
     constructor(private service: DonsMySuffixService) {}
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IDonsMySuffix> {
         const id = route.params['id'] ? route.params['id'] : null;
         if (id) {
-            return this.service.find(id).pipe(map((dons: HttpResponse<DonsMySuffix>) => dons.body));
+            return this.service.find(id).pipe(
+                filter((response: HttpResponse<DonsMySuffix>) => response.ok),
+                map((dons: HttpResponse<DonsMySuffix>) => dons.body)
+            );
         }
         return of(new DonsMySuffix());
     }
@@ -27,7 +30,7 @@ export class DonsMySuffixResolve implements Resolve<IDonsMySuffix> {
 
 export const donsRoute: Routes = [
     {
-        path: 'dons-my-suffix',
+        path: '',
         component: DonsMySuffixComponent,
         data: {
             authorities: ['ROLE_USER'],
@@ -36,7 +39,7 @@ export const donsRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'dons-my-suffix/:id/view',
+        path: ':id/view',
         component: DonsMySuffixDetailComponent,
         resolve: {
             dons: DonsMySuffixResolve
@@ -48,7 +51,7 @@ export const donsRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'dons-my-suffix/new',
+        path: 'new',
         component: DonsMySuffixUpdateComponent,
         resolve: {
             dons: DonsMySuffixResolve
@@ -60,7 +63,7 @@ export const donsRoute: Routes = [
         canActivate: [UserRouteAccessService]
     },
     {
-        path: 'dons-my-suffix/:id/edit',
+        path: ':id/edit',
         component: DonsMySuffixUpdateComponent,
         resolve: {
             dons: DonsMySuffixResolve
@@ -75,7 +78,7 @@ export const donsRoute: Routes = [
 
 export const donsPopupRoute: Routes = [
     {
-        path: 'dons-my-suffix/:id/delete',
+        path: ':id/delete',
         component: DonsMySuffixDeletePopupComponent,
         resolve: {
             dons: DonsMySuffixResolve

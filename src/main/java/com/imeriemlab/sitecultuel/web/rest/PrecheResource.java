@@ -1,6 +1,4 @@
 package com.imeriemlab.sitecultuel.web.rest;
-
-import com.codahale.metrics.annotation.Timed;
 import com.imeriemlab.sitecultuel.service.PrecheService;
 import com.imeriemlab.sitecultuel.web.rest.errors.BadRequestAlertException;
 import com.imeriemlab.sitecultuel.web.rest.util.HeaderUtil;
@@ -42,7 +40,6 @@ public class PrecheResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/preches")
-    @Timed
     public ResponseEntity<PrecheDTO> createPreche(@RequestBody PrecheDTO precheDTO) throws URISyntaxException {
         log.debug("REST request to save Preche : {}", precheDTO);
         if (precheDTO.getId() != null) {
@@ -64,7 +61,6 @@ public class PrecheResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/preches")
-    @Timed
     public ResponseEntity<PrecheDTO> updatePreche(@RequestBody PrecheDTO precheDTO) throws URISyntaxException {
         log.debug("REST request to update Preche : {}", precheDTO);
         if (precheDTO.getId() == null) {
@@ -82,7 +78,6 @@ public class PrecheResource {
      * @return the ResponseEntity with status 200 (OK) and the list of preches in body
      */
     @GetMapping("/preches")
-    @Timed
     public List<PrecheDTO> getAllPreches() {
         log.debug("REST request to get all Preches");
         return precheService.findAll();
@@ -95,7 +90,6 @@ public class PrecheResource {
      * @return the ResponseEntity with status 200 (OK) and with body the precheDTO, or with status 404 (Not Found)
      */
     @GetMapping("/preches/{id}")
-    @Timed
     public ResponseEntity<PrecheDTO> getPreche(@PathVariable Long id) {
         log.debug("REST request to get Preche : {}", id);
         Optional<PrecheDTO> precheDTO = precheService.findOne(id);
@@ -109,7 +103,6 @@ public class PrecheResource {
      * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/preches/{id}")
-    @Timed
     public ResponseEntity<Void> deletePreche(@PathVariable Long id) {
         log.debug("REST request to delete Preche : {}", id);
         precheService.delete(id);

@@ -1,6 +1,6 @@
 package com.imeriemlab.sitecultuel.domain;
 
-import io.swagger.annotations.ApiModel;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -14,14 +14,13 @@ import java.util.Objects;
  * Task entity.
  * @author The IMeriem team.
  */
-@ApiModel(description = "Task entity. @author The IMeriem team.")
 @Entity
 @Table(name = "preche")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Preche implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
