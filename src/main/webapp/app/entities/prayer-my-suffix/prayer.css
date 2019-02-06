@@ -2,12 +2,12 @@
 Prayer page styles
 ========================================================================== */
 table {
-	width: 70%;
+    width: 70%;
 }
 
-
-tr, th {
-	height: 2px;	
+tr,
+th {
+    height: 2px;
 }
 
 thead,
