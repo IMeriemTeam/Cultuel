@@ -19,7 +19,15 @@ import { CultuelAccountModule } from './account/account.module';
 import { CultuelEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
-import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent, SidenavComponent } from './layouts';
+import {
+    JhiMainComponent,
+    NavbarComponent,
+    FooterComponent,
+    PageRibbonComponent,
+    ActiveMenuDirective,
+    ErrorComponent,
+    SidenavComponent
+} from './layouts';
 
 @NgModule({
     imports: [
@@ -40,7 +48,15 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         CultuelEntityModule,
         CultuelAppRoutingModule
     ],
-    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent, SidenavComponent],
+    declarations: [
+        JhiMainComponent,
+        NavbarComponent,
+        ErrorComponent,
+        PageRibbonComponent,
+        ActiveMenuDirective,
+        FooterComponent,
+        SidenavComponent
+    ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
