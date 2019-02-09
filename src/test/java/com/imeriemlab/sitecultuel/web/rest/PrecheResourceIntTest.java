@@ -54,6 +54,9 @@ public class PrecheResourceIntTest {
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
+    private static final String DEFAULT_LINK = "AAAAAAAAAA";
+    private static final String UPDATED_LINK = "BBBBBBBBBB";
+
     @Autowired
     private PrecheRepository precheRepository;
 
@@ -104,7 +107,8 @@ public class PrecheResourceIntTest {
         Preche preche = new Preche()
             .title(DEFAULT_TITLE)
             .imam(DEFAULT_IMAM)
-            .date(DEFAULT_DATE);
+            .date(DEFAULT_DATE)
+            .link(DEFAULT_LINK);
         return preche;
     }
 
@@ -132,6 +136,7 @@ public class PrecheResourceIntTest {
         assertThat(testPreche.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testPreche.getImam()).isEqualTo(DEFAULT_IMAM);
         assertThat(testPreche.getDate()).isEqualTo(DEFAULT_DATE);
+        assertThat(testPreche.getLink()).isEqualTo(DEFAULT_LINK);
     }
 
     @Test
@@ -167,7 +172,8 @@ public class PrecheResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(preche.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].imam").value(hasItem(DEFAULT_IMAM.toString())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
+            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK.toString())));
     }
     
     @Test
@@ -183,7 +189,8 @@ public class PrecheResourceIntTest {
             .andExpect(jsonPath("$.id").value(preche.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.imam").value(DEFAULT_IMAM.toString()))
-            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
+            .andExpect(jsonPath("$.link").value(DEFAULT_LINK.toString()));
     }
 
     @Test
@@ -209,7 +216,8 @@ public class PrecheResourceIntTest {
         updatedPreche
             .title(UPDATED_TITLE)
             .imam(UPDATED_IMAM)
-            .date(UPDATED_DATE);
+            .date(UPDATED_DATE)
+            .link(UPDATED_LINK);
         PrecheDTO precheDTO = precheMapper.toDto(updatedPreche);
 
         restPrecheMockMvc.perform(put("/api/preches")
@@ -224,6 +232,7 @@ public class PrecheResourceIntTest {
         assertThat(testPreche.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testPreche.getImam()).isEqualTo(UPDATED_IMAM);
         assertThat(testPreche.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testPreche.getLink()).isEqualTo(UPDATED_LINK);
     }
 
     @Test

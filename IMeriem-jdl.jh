@@ -6,12 +6,14 @@
 entity Preche {
 	title String,
 	imam String,
-    date LocalDate
+    date LocalDate,
+    link String
 }
 
 entity Dons {
 	don Long,
-	dateDons LocalDate
+	dateDons LocalDate,
+	labelDon String
 }
 
 

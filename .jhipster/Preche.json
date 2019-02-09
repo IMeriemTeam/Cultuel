@@ -12,6 +12,10 @@
         {
             "fieldName": "date",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String"
         }
     ],
     "relationships": [],

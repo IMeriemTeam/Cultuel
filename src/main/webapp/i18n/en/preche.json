@@ -17,7 +17,8 @@
             },
             "title": "Title",
             "imam": "Imam",
-            "date": "Date"
+            "date": "Date",
+            "link": "Link"
         }
     }
 }

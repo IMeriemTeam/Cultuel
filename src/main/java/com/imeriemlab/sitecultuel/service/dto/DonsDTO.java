@@ -14,6 +14,8 @@ public class DonsDTO implements Serializable {
 
     private LocalDate dateDons;
 
+    private String labelDon;
+
 
     private Long donsUserId;
 
@@ -39,6 +41,14 @@ public class DonsDTO implements Serializable {
 
     public void setDateDons(LocalDate dateDons) {
         this.dateDons = dateDons;
+    }
+
+    public String getLabelDon() {
+        return labelDon;
+    }
+
+    public void setLabelDon(String labelDon) {
+        this.labelDon = labelDon;
     }
 
     public Long getDonsUserId() {
@@ -76,6 +86,7 @@ public class DonsDTO implements Serializable {
             "id=" + getId() +
             ", don=" + getDon() +
             ", dateDons='" + getDateDons() + "'" +
+            ", labelDon='" + getLabelDon() + "'" +
             ", donsUser=" + getDonsUserId() +
             "}";
     }

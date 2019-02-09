@@ -17,6 +17,7 @@
             },
             "don": "Don",
             "dateDons": "Date Dons",
+            "labelDon": "Label Don",
             "donsUser": "Dons User"
         }
     }

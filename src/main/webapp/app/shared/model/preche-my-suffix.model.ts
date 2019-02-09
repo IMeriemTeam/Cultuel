@@ -5,8 +5,9 @@ export interface IPrecheMySuffix {
     title?: string;
     imam?: string;
     date?: Moment;
+    link?: string;
 }
 
 export class PrecheMySuffix implements IPrecheMySuffix {
-    constructor(public id?: number, public title?: string, public imam?: string, public date?: Moment) {}
+    constructor(public id?: number, public title?: string, public imam?: string, public date?: Moment, public link?: string) {}
 }

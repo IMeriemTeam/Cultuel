@@ -8,6 +8,10 @@
         {
             "fieldName": "dateDons",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "labelDon",
+            "fieldType": "String"
         }
     ],
     "relationships": [
@@ -15,7 +19,8 @@
             "relationshipType": "many-to-one",
             "relationshipName": "donsUser",
             "otherEntityName": "user",
-            "otherEntityField": "id"
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "dons"
         }
     ],
     "changelogDate": "20181028204059",

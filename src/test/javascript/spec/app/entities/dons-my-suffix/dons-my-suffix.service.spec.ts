@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new DonsMySuffix(0, 0, currentDate);
+            elemDefault = new DonsMySuffix(0, 0, currentDate, 'AAAAAAA');
         });
 
         describe('Service methods', async () => {
@@ -71,7 +71,8 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         don: 1,
-                        dateDons: currentDate.format(DATE_FORMAT)
+                        dateDons: currentDate.format(DATE_FORMAT),
+                        labelDon: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -94,7 +95,8 @@ describe('Service Tests', () => {
                 const returnedFromService = Object.assign(
                     {
                         don: 1,
-                        dateDons: currentDate.format(DATE_FORMAT)
+                        dateDons: currentDate.format(DATE_FORMAT),
+                        labelDon: 'BBBBBB'
                     },
                     elemDefault
                 );

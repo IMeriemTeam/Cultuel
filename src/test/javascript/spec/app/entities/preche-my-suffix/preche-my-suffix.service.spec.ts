@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new PrecheMySuffix(0, 'AAAAAAA', 'AAAAAAA', currentDate);
+            elemDefault = new PrecheMySuffix(0, 'AAAAAAA', 'AAAAAAA', currentDate, 'AAAAAAA');
         });
 
         describe('Service methods', async () => {
@@ -72,7 +72,8 @@ describe('Service Tests', () => {
                     {
                         title: 'BBBBBB',
                         imam: 'BBBBBB',
-                        date: currentDate.format(DATE_FORMAT)
+                        date: currentDate.format(DATE_FORMAT),
+                        link: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -96,7 +97,8 @@ describe('Service Tests', () => {
                     {
                         title: 'BBBBBB',
                         imam: 'BBBBBB',
-                        date: currentDate.format(DATE_FORMAT)
+                        date: currentDate.format(DATE_FORMAT),
+                        link: 'BBBBBB'
                     },
                     elemDefault
                 );

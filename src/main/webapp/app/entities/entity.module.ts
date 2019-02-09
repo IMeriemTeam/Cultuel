@@ -15,6 +15,14 @@ import { RouterModule } from '@angular/router';
             {
                 path: 'prayer-my-suffix',
                 loadChildren: './prayer-my-suffix/prayer-my-suffix.module#CultuelPrayerMySuffixModule'
+            },
+            {
+                path: 'preche-my-suffix',
+                loadChildren: './preche-my-suffix/preche-my-suffix.module#CultuelPrecheMySuffixModule'
+            },
+            {
+                path: 'dons-my-suffix',
+                loadChildren: './dons-my-suffix/dons-my-suffix.module#CultuelDonsMySuffixModule'
             }
             /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
         ])

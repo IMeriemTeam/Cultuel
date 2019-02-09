@@ -51,6 +51,9 @@ public class DonsResourceIntTest {
     private static final LocalDate DEFAULT_DATE_DONS = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_DONS = LocalDate.now(ZoneId.systemDefault());
 
+    private static final String DEFAULT_LABEL_DON = "AAAAAAAAAA";
+    private static final String UPDATED_LABEL_DON = "BBBBBBBBBB";
+
     @Autowired
     private DonsRepository donsRepository;
 
@@ -100,7 +103,8 @@ public class DonsResourceIntTest {
     public static Dons createEntity(EntityManager em) {
         Dons dons = new Dons()
             .don(DEFAULT_DON)
-            .dateDons(DEFAULT_DATE_DONS);
+            .dateDons(DEFAULT_DATE_DONS)
+            .labelDon(DEFAULT_LABEL_DON);
         return dons;
     }
 
@@ -127,6 +131,7 @@ public class DonsResourceIntTest {
         Dons testDons = donsList.get(donsList.size() - 1);
         assertThat(testDons.getDon()).isEqualTo(DEFAULT_DON);
         assertThat(testDons.getDateDons()).isEqualTo(DEFAULT_DATE_DONS);
+        assertThat(testDons.getLabelDon()).isEqualTo(DEFAULT_LABEL_DON);
     }
 
     @Test
@@ -161,7 +166,8 @@ public class DonsResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(dons.getId().intValue())))
             .andExpect(jsonPath("$.[*].don").value(hasItem(DEFAULT_DON.intValue())))
-            .andExpect(jsonPath("$.[*].dateDons").value(hasItem(DEFAULT_DATE_DONS.toString())));
+            .andExpect(jsonPath("$.[*].dateDons").value(hasItem(DEFAULT_DATE_DONS.toString())))
+            .andExpect(jsonPath("$.[*].labelDon").value(hasItem(DEFAULT_LABEL_DON.toString())));
     }
     
     @Test
@@ -176,7 +182,8 @@ public class DonsResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(dons.getId().intValue()))
             .andExpect(jsonPath("$.don").value(DEFAULT_DON.intValue()))
-            .andExpect(jsonPath("$.dateDons").value(DEFAULT_DATE_DONS.toString()));
+            .andExpect(jsonPath("$.dateDons").value(DEFAULT_DATE_DONS.toString()))
+            .andExpect(jsonPath("$.labelDon").value(DEFAULT_LABEL_DON.toString()));
     }
 
     @Test
@@ -201,7 +208,8 @@ public class DonsResourceIntTest {
         em.detach(updatedDons);
         updatedDons
             .don(UPDATED_DON)
-            .dateDons(UPDATED_DATE_DONS);
+            .dateDons(UPDATED_DATE_DONS)
+            .labelDon(UPDATED_LABEL_DON);
         DonsDTO donsDTO = donsMapper.toDto(updatedDons);
 
         restDonsMockMvc.perform(put("/api/dons")
@@ -215,6 +223,7 @@ public class DonsResourceIntTest {
         Dons testDons = donsList.get(donsList.size() - 1);
         assertThat(testDons.getDon()).isEqualTo(UPDATED_DON);
         assertThat(testDons.getDateDons()).isEqualTo(UPDATED_DATE_DONS);
+        assertThat(testDons.getLabelDon()).isEqualTo(UPDATED_LABEL_DON);
     }
 
     @Test

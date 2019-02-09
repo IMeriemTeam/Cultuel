@@ -34,6 +34,9 @@ public class Preche implements Serializable {
     @Column(name = "jhi_date")
     private LocalDate date;
 
+    @Column(name = "jhi_link")
+    private String link;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -81,6 +84,19 @@ public class Preche implements Serializable {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    public String getLink() {
+        return link;
+    }
+
+    public Preche link(String link) {
+        this.link = link;
+        return this;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -110,6 +126,7 @@ public class Preche implements Serializable {
             ", title='" + getTitle() + "'" +
             ", imam='" + getImam() + "'" +
             ", date='" + getDate() + "'" +
+            ", link='" + getLink() + "'" +
             "}";
     }
 }

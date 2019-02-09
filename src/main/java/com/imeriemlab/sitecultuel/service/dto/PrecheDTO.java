@@ -18,6 +18,8 @@ public class PrecheDTO implements Serializable {
 
     private LocalDate date;
 
+    private String link;
+
 
     public Long getId() {
         return id;
@@ -51,6 +53,14 @@ public class PrecheDTO implements Serializable {
         this.date = date;
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -79,6 +89,7 @@ public class PrecheDTO implements Serializable {
             ", title='" + getTitle() + "'" +
             ", imam='" + getImam() + "'" +
             ", date='" + getDate() + "'" +
+            ", link='" + getLink() + "'" +
             "}";
     }
 }

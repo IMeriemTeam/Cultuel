@@ -31,6 +31,9 @@ public class Dons implements Serializable {
     @Column(name = "date_dons")
     private LocalDate dateDons;
 
+    @Column(name = "label_don")
+    private String labelDon;
+
     @ManyToOne
     @JsonIgnoreProperties("dons")
     private User donsUser;
@@ -68,6 +71,19 @@ public class Dons implements Serializable {
 
     public void setDateDons(LocalDate dateDons) {
         this.dateDons = dateDons;
+    }
+
+    public String getLabelDon() {
+        return labelDon;
+    }
+
+    public Dons labelDon(String labelDon) {
+        this.labelDon = labelDon;
+        return this;
+    }
+
+    public void setLabelDon(String labelDon) {
+        this.labelDon = labelDon;
     }
 
     public User getDonsUser() {
@@ -110,6 +126,7 @@ public class Dons implements Serializable {
             "id=" + getId() +
             ", don=" + getDon() +
             ", dateDons='" + getDateDons() + "'" +
+            ", labelDon='" + getLabelDon() + "'" +
             "}";
     }
 }

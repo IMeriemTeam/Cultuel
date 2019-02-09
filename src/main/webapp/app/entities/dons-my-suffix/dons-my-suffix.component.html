@@ -17,6 +17,7 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="cultuelApp.dons.don">Don</span></th>
             <th><span jhiTranslate="cultuelApp.dons.dateDons">Date Dons</span></th>
+            <th><span jhiTranslate="cultuelApp.dons.labelDon">Label Don</span></th>
             <th><span jhiTranslate="cultuelApp.dons.donsUser">Dons User</span></th>
             <th></th>
             </tr>
@@ -26,6 +27,7 @@
                 <td><a [routerLink]="['/dons-my-suffix', dons.id, 'view' ]">{{dons.id}}</a></td>
                 <td>{{dons.don}}</td>
                 <td>{{dons.dateDons | date:'mediumDate'}}</td>
+                <td>{{dons.labelDon}}</td>
                 <td>
                     {{dons.donsUserId}}
                 </td>
