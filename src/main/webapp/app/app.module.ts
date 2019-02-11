@@ -38,7 +38,7 @@ import {
             alertAsToast: false,
             alertTimeout: 5000,
             i18nEnabled: true,
-            defaultI18nLang: 'ar-ly'
+            defaultI18nLang: 'fr'
         }),
         CultuelSharedModule.forRoot(),
         CultuelCoreModule,

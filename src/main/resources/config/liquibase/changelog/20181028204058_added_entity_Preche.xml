@@ -17,7 +17,7 @@
     <!--
         Added the entity Preche.
     -->
-    <changeSet id="20181028204058-1" author="jhipster">
+    <changeSet id="20181028204058" author="jhipster">
         <createTable tableName="preche" remarks="Task entity. @author The IMeriem team.">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
