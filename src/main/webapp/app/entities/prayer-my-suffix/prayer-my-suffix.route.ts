@@ -2,7 +2,6 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@a
 import { UserRouteAccessService } from 'app/core';
 import { PrayerMySuffixComponent } from './prayer-my-suffix.component';
 
-
 export const prayerRoute: Routes = [
     {
         path: '',
@@ -14,5 +13,3 @@ export const prayerRoute: Routes = [
         canActivate: [UserRouteAccessService]
     }
 ];
-
-
