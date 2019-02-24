@@ -1,5 +1,6 @@
 package com.imeriemlab.sitecultuel.service;
 
+import com.imeriemlab.sitecultuel.domain.Dons;
 import com.imeriemlab.sitecultuel.service.dto.DonsDTO;
 
 import java.util.List;
@@ -40,4 +41,11 @@ public interface DonsService {
      * @param id the id of the entity
      */
     void delete(Long id);
+
+    /**
+     * Get all don for the current user .
+     *
+     * @return the entity
+     */
+	List<Dons> findByDonsUserIsCurrentUser();
 }

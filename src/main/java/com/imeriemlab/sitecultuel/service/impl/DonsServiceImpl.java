@@ -86,4 +86,18 @@ public class DonsServiceImpl implements DonsService {
     public void delete(Long id) {
         log.debug("Request to delete Dons : {}", id);        donsRepository.deleteById(id);
     }
+    
+    
+    
+    /**
+     * Get all don for the current user .
+     *
+     * @return the entity
+     */
+    @Override
+	@Transactional(readOnly = true)
+	public List<Dons> findByDonsUserIsCurrentUser() {
+		log.debug("Request to get Dons by current User: {}");
+		return donsRepository.findByDonsUserIsCurrentUser();
+	}
 }

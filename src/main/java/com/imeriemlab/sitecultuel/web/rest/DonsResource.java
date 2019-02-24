@@ -1,4 +1,6 @@
 package com.imeriemlab.sitecultuel.web.rest;
+import com.imeriemlab.sitecultuel.config.Constants;
+import com.imeriemlab.sitecultuel.domain.Dons;
 import com.imeriemlab.sitecultuel.service.DonsService;
 import com.imeriemlab.sitecultuel.web.rest.errors.BadRequestAlertException;
 import com.imeriemlab.sitecultuel.web.rest.util.HeaderUtil;
@@ -107,5 +109,15 @@ public class DonsResource {
         log.debug("REST request to delete Dons : {}", id);
         donsService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
-    }
-}
+    }    
+    
+    /**
+     * GET  /dons/:login : get the login dons.
+     *
+     * @return the ResponseEntity with status 200 (OK) and with body the don, or with status 404 (Not Found)
+     */
+    @GetMapping("/dons/{login:" + Constants.LOGIN_REGEX + "}\"")
+    public List<Dons> getByDonsUserIsCurrentUser() {
+        log.debug("REST request to get Dons by current User : {}");
+        return donsService.findByDonsUserIsCurrentUser();
+    }}

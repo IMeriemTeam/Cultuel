@@ -1,9 +1,13 @@
+<!-- <div class="navbar-collapse collapse" [ngSwitch]="isAuthenticated()"> -->
+<!-- </div> -->
+<br>
 <div class="panel-body">
 	<div class="form-group" align="center">
 		<form action="">
 			<label> Votre don:</label> <input type="number" min=0  width="20%"/> 
 			<label> Type de don:</label> <select name="don">
-				<option value="general">General</option>
+				<option value="Géneral">General</option>
+				<option value="Zakat">Zakat</option>
 				<option value="Action1">Action1</option>
 				<option value="Action2">Action2</option>
 			</select>
@@ -14,7 +18,8 @@
 
 </div>
 
-<div>
+	
+<div *jhiHasAnyAuthority="'ROLE_ADMIN'">
     <h2 id="page-heading">
         <span jhiTranslate="cultuelApp.dons.home.title">Dons</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dons-my-suffix" [routerLink]="['/dons-my-suffix/new']">
@@ -76,3 +81,46 @@
         </table>
     </div>
 </div>
+
+
+<div *jhiHasAnyAuthority="'ROLE_USER'">
+	<div class="table-responsive" *ngIf="dons">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th><span jhiTranslate="global.field.id">ID</span></th>
+					<th><span jhiTranslate="cultuelApp.dons.don">Don</span></th>
+					<th><span jhiTranslate="cultuelApp.dons.dateDons">Date
+							Dons</span></th>
+					<th><span jhiTranslate="cultuelApp.dons.labelDon">Label
+							Don</span></th>
+					<th><span jhiTranslate="cultuelApp.dons.donsUser">Dons
+							User</span></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let dons of dons ;trackBy: trackId">
+					<td><a [routerLink]="['/dons-my-suffix', dons.id, 'view' ]">{{dons.id}}</a></td>
+					<td>{{dons.don}}</td>
+					<td>{{dons.dateDons | date:'mediumDate'}}</td>
+					<td>{{dons.labelDon}}</td>
+					<td>{{dons.donsUserId}}</td>
+					<td class="text-right">
+						<div class="btn-group flex-btn-group-container">
+							<button type="submit"
+								[routerLink]="['/dons-my-suffix', dons.id, 'view' ]"
+								class="btn btn-info btn-sm">
+								<fa-icon [icon]="'eye'"></fa-icon>
+								<span class="d-none d-md-inline"
+									jhiTranslate="entity.action.view">View</span>
+							</button>			
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>
+
