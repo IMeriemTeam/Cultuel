@@ -1,0 +1,10 @@
+/* ==========================================================================
+contact page styles
+========================================================================== */
+.hipster {
+    display: inline-block;
+    width: 347px;
+    height: 197px;
+    background: url('../../../content/images/institut.jpg') no-repeat center top;
+    background-size: contain;
+}

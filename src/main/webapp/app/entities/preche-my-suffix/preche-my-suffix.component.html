@@ -1,4 +1,4 @@
-<div>
+<div *jhiHasAnyAuthority="'ROLE_ADMIN'">
     <h2 id="page-heading">
         <span jhiTranslate="cultuelApp.preche.home.title">Preches</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-preche-my-suffix" [routerLink]="['/preche-my-suffix/new']">
@@ -57,4 +57,18 @@
             </tbody>
         </table>
     </div>
+</div>
+
+
+<div *jhiHasAnyAuthority="'ROLE_USER'">
+	<table class="table table-striped">
+		<tr *ngFor="let preche of preches ;trackBy: trackId">
+				<h2><b>{{preche.title}}</b></h2>
+				<h3>{{preche.imam}}</h3>
+				<h4>{{preche.date | date:'mediumDate'}}</h4>
+<!-- 				<iframe width="420" height="315" src="{{preche.link}}"> </iframe> -->
+				<iframe width="420" height="315" src="https://www.youtube.com/embed/-sYC6ulzM3k"> </iframe>
+				
+		</tr>
+	</table>
 </div>

@@ -5,6 +5,10 @@ import { RouterModule } from '@angular/router';
     imports: [
         RouterModule.forChild([
             {
+                path: 'contact-my-suffix',
+                loadChildren: './contact-my-suffix/contact-my-suffix.module#CultuelContactMySuffixModule'
+            },
+            {
                 path: 'preche-my-suffix',
                 loadChildren: './preche-my-suffix/preche-my-suffix.module#CultuelPrecheMySuffixModule'
             },
