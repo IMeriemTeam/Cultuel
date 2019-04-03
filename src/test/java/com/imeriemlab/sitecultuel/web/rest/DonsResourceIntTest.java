@@ -45,8 +45,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CultuelApp.class)
 public class DonsResourceIntTest {
 
-    private static final Long DEFAULT_DON = 1L;
-    private static final Long UPDATED_DON = 2L;
+    private static final Float DEFAULT_DON = 1F;
+    private static final Float UPDATED_DON = 2F;
 
     private static final LocalDate DEFAULT_DATE_DONS = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_DONS = LocalDate.now(ZoneId.systemDefault());
@@ -165,7 +165,7 @@ public class DonsResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(dons.getId().intValue())))
-            .andExpect(jsonPath("$.[*].don").value(hasItem(DEFAULT_DON.intValue())))
+            .andExpect(jsonPath("$.[*].don").value(hasItem(DEFAULT_DON.doubleValue())))
             .andExpect(jsonPath("$.[*].dateDons").value(hasItem(DEFAULT_DATE_DONS.toString())))
             .andExpect(jsonPath("$.[*].labelDon").value(hasItem(DEFAULT_LABEL_DON.toString())));
     }
@@ -181,7 +181,7 @@ public class DonsResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(dons.getId().intValue()))
-            .andExpect(jsonPath("$.don").value(DEFAULT_DON.intValue()))
+            .andExpect(jsonPath("$.don").value(DEFAULT_DON.doubleValue()))
             .andExpect(jsonPath("$.dateDons").value(DEFAULT_DATE_DONS.toString()))
             .andExpect(jsonPath("$.labelDon").value(DEFAULT_LABEL_DON.toString()));
     }

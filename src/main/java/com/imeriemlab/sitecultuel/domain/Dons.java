@@ -26,7 +26,7 @@ public class Dons implements Serializable {
     private Long id;
 
     @Column(name = "don")
-    private Long don;
+    private Float don;
 
     @Column(name = "date_dons")
     private LocalDate dateDons;
@@ -47,16 +47,16 @@ public class Dons implements Serializable {
         this.id = id;
     }
 
-    public Long getDon() {
+    public Float getDon() {
         return don;
     }
 
-    public Dons don(Long don) {
+    public Dons don(Float don) {
         this.don = don;
         return this;
     }
 
-    public void setDon(Long don) {
+    public void setDon(Float don) {
         this.don = don;
     }
 

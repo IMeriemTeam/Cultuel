@@ -3,7 +3,7 @@
     "fields": [
         {
             "fieldName": "don",
-            "fieldType": "Long"
+            "fieldType": "Float"
         },
         {
             "fieldName": "dateDons",

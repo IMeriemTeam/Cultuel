@@ -10,7 +10,7 @@ public class DonsDTO implements Serializable {
 
     private Long id;
 
-    private Long don;
+    private Float don;
 
     private LocalDate dateDons;
 
@@ -27,11 +27,11 @@ public class DonsDTO implements Serializable {
         this.id = id;
     }
 
-    public Long getDon() {
+    public Float getDon() {
         return don;
     }
 
-    public void setDon(Long don) {
+    public void setDon(Float don) {
         this.don = don;
     }
 

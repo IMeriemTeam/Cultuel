@@ -17,12 +17,12 @@
     <!--
         Added the entity Dons.
     -->
-    <changeSet id="20181028204059" author="jhipster">
+    <changeSet id="20181028204059-1" author="jhipster">
         <createTable tableName="dons">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="don" type="bigint">
+            <column name="don" type="${floatType}">
                 <constraints nullable="true" />
             </column>
 
