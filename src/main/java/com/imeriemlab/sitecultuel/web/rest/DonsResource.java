@@ -80,9 +80,12 @@ public class DonsResource {
      * @return the ResponseEntity with status 200 (OK) and the list of dons in body
      */
     @GetMapping("/dons")
-    public List<DonsDTO> getAllDons() {
+    public List<Dons> getAllDons() {
         log.debug("REST request to get all Dons");
-        return donsService.findAll();
+        //KBA change find all by findByDonsUserIsCurrentUser
+        //return donsService.findAll();
+        return donsService.findByDonsUserIsCurrentUser();
+
     }
 
     /**

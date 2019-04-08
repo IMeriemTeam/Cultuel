@@ -1,23 +1,26 @@
 <!-- <div class="navbar-collapse collapse" [ngSwitch]="isAuthenticated()"> -->
 <!-- </div> -->
 <br>
-<div class="panel-body">
-	<div class="form-group" align="center">
-		<form action="">
-			<label> Votre don:</label> <input type="number" min=0  width="20%"/> 
-			<label> Type de don:</label> <select name="don">
-				<option value="Géneral">General</option>
-				<option value="Zakat">Zakat</option>
-				<option value="Action1">Action1</option>
-				<option value="Action2">Action2</option>
-			</select>
-			<br><br>
-			<button type="submit" class="btn btn-primary">Payer</button>
-		</form>
-	</div>
+<div class="panel-body" align="center">
+	<dl class="row-md jh-entity-details">
+		<label> <dt>Votre don:</dt>	</label>
+		<input  min=0 width="20%" name="don" id="field_don" [(ngModel)]="paypalPayment.don" required/>
+		
+		<br><br>
+		<label><dt> Type de don:</dt></label>	
+		
+		<input type="radio" id="General" name="labelDon" value="General" [(ngModel)]="paypalPayment.labelDon" checked>General
+		
+		<input type="radio"	id="Zakat" name="labelDon" value="Zakat" [(ngModel)]="paypalPayment.labelDon">Zakat
+		
+		<input type="radio"	id="ZakatFitre" name="labelDon" value="Zakat Fitre" [(ngModel)]="paypalPayment.labelDon">Zakat Fitre
+	</dl>
+</div>
+
+<br>
 
 <div class="text-center">
-  <h2 *ngIf="paypalLoad">Paypal button is loading (if it's too long, your client id is certainly wrong)</h2>
+  <h2 *ngIf="loading">Payment system is loading..</h2>
   <div id="paypal-checkout-btn"></div>
 </div>
 
@@ -25,7 +28,7 @@
 <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
     <h2 id="page-heading">
         <span jhiTranslate="cultuelApp.dons.home.title">Dons</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dons-my-suffix" [routerLink]="['/dons-my-suffix/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dons-my-suffix" [routerLink]="['/dons/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="cultuelApp.dons.home.createLabel">
             Create new Dons
@@ -48,7 +51,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let dons of dons ;trackBy: trackId">
-                <td><a [routerLink]="['/dons-my-suffix', dons.id, 'view' ]">{{dons.id}}</a></td>
+                <td><a [routerLink]="['/dons', dons.id, 'view' ]">{{dons.id}}</a></td>
                 <td>{{dons.don}}</td>
                 <td>{{dons.dateDons | date:'mediumDate'}}</td>
                 <td>{{dons.labelDon}}</td>
@@ -58,19 +61,19 @@
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
-                                [routerLink]="['/dons-my-suffix', dons.id, 'view' ]"
+                                [routerLink]="['/dons', dons.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/dons-my-suffix', dons.id, 'edit']"
+                                [routerLink]="['/dons', dons.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', 'dons-my-suffix', { outlets: { popup: dons.id + '/delete'} }]"
+                                [routerLink]="['/', 'dons', { outlets: { popup: dons.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
@@ -104,7 +107,7 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let dons of dons ;trackBy: trackId">
-					<td><a [routerLink]="['/dons-my-suffix', dons.id, 'view' ]">{{dons.id}}</a></td>
+					<td><a [routerLink]="['/dons', dons.id, 'view' ]">{{dons.id}}</a></td>
 					<td>{{dons.don}}</td>
 					<td>{{dons.dateDons | date:'mediumDate'}}</td>
 					<td>{{dons.labelDon}}</td>
@@ -112,7 +115,7 @@
 					<td class="text-right">
 						<div class="btn-group flex-btn-group-container">
 							<button type="submit"
-								[routerLink]="['/dons-my-suffix', dons.id, 'view' ]"
+								[routerLink]="['/dons', dons.id, 'view' ]"
 								class="btn btn-info btn-sm">
 								<fa-icon [icon]="'eye'"></fa-icon>
 								<span class="d-none d-md-inline"
@@ -123,6 +126,15 @@
 				</tr>
 			</tbody>
 		</table>
+	</div>
+	<div class="btn-group">
+		<h2> Mon recu fiscale</h2>
+		<br><br>
+<!-- 		<button type="submit" class="btn btn-info btn-sm"> -->
+<!-- 			<span class="d-none d-md-inline" (click)="sendFiscale(nom.value)> -->
+<!-- 			reçevoir mon reçu fiscale -->
+<!-- 			</span> -->
+<!-- 		</button> -->
 	</div>
 
 </div>

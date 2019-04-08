@@ -84,7 +84,8 @@ public class DonsServiceImpl implements DonsService {
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete Dons : {}", id);        donsRepository.deleteById(id);
+        log.debug("Request to delete Dons : {}", id);
+        donsRepository.deleteById(id);
     }
     
     
