@@ -19,26 +19,31 @@
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
 
               <li *ngSwitchCase="true"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="preche-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                <a class="nav-link" routerLink="preche" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                    <span jhiTranslate="global.menu.entities.precheMySuffix">Preche My Suffix</span>
                 </a>
               </li>
               <li *ngSwitchCase="true"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                <a class="nav-link" routerLink="dons-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                <a class="nav-link" routerLink="dons" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                    <span jhiTranslate="global.menu.entities.donsMySuffix">Dons My Suffix</span>
                 </a>
               </li>
 	          <li *ngSwitchCase="true"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                  <a class="nav-link" routerLink="prayer-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                  <a class="nav-link" routerLink="prayer" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                      <span jhiTranslate="global.menu.entities.prayerMySuffix">Prayer My Suffix</span>
                   </a>
                </li>
                <li *ngSwitchCase="true"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-                  <a class="nav-link" routerLink="contact-my-suffix" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                  <a class="nav-link" routerLink="contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                      <span jhiTranslate="global.menu.entities.contactMySuffix">Contact My Suffix</span>
                   </a>
                </li>
         
+               <li>
+                   <a class="dropdown-item" routerLink="articles" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                      <span jhiTranslate="global.menu.entities.articlesTrue">Articles True</span>
+                   </a>
+               </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
            
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">

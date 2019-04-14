@@ -5,28 +5,24 @@ import { RouterModule } from '@angular/router';
     imports: [
         RouterModule.forChild([
             {
-                path: 'contact-my-suffix',
+                path: 'contact',
                 loadChildren: './contact-my-suffix/contact-my-suffix.module#CultuelContactMySuffixModule'
             },
             {
-                path: 'preche-my-suffix',
-                loadChildren: './preche-my-suffix/preche-my-suffix.module#CultuelPrecheMySuffixModule'
-            },
-            {
-                path: 'dons-my-suffix',
-                loadChildren: './dons-my-suffix/dons-my-suffix.module#CultuelDonsMySuffixModule'
-            },
-            {
-                path: 'prayer-my-suffix',
+                path: 'prayer',
                 loadChildren: './prayer-my-suffix/prayer-my-suffix.module#CultuelPrayerMySuffixModule'
             },
             {
-                path: 'preche-my-suffix',
+                path: 'preche',
                 loadChildren: './preche-my-suffix/preche-my-suffix.module#CultuelPrecheMySuffixModule'
             },
             {
-                path: 'dons-my-suffix',
+                path: 'dons',
                 loadChildren: './dons-my-suffix/dons-my-suffix.module#CultuelDonsMySuffixModule'
+            },
+            {
+                path: 'articles',
+                loadChildren: './articles-true/articles-true.module#CultuelArticlesTrueModule'
             }
             /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
         ])

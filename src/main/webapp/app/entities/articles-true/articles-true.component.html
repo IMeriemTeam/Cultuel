@@ -1,0 +1,62 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cultuelApp.articles.home.title">Articles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-articles-true" [routerLink]="['/articles-true/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="cultuelApp.articles.home.createLabel">
+            Create new Articles
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="articles">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="titre"><span jhiTranslate="cultuelApp.articles.titre">Titre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="date"><span jhiTranslate="cultuelApp.articles.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="message"><span jhiTranslate="cultuelApp.articles.message">Message</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="user.login"><span jhiTranslate="cultuelApp.articles.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let articles of articles ;trackBy: trackId">
+                <td><a [routerLink]="['/articles-true', articles.id, 'view' ]">{{articles.id}}</a></td>
+                <td>{{articles.titre}}</td>
+                <td>{{articles.date | date:'mediumDate'}}</td>
+                <td>{{articles.message}}</td>
+                <td>
+                    {{articles.user?.login}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/articles-true', articles.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/articles-true', articles.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'articles-true', { outlets: { popup: articles.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

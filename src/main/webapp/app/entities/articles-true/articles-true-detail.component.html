@@ -1,25 +1,25 @@
 <div class="row justify-content-center">
     <div class="col-8">
-        <div *ngIf="dons">
-            <h2><span jhiTranslate="cultuelApp.dons.detail.title">Dons</span> {{dons.id}}</h2>
+        <div *ngIf="articles">
+            <h2><span jhiTranslate="cultuelApp.articles.detail.title">Articles</span> {{articles.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="cultuelApp.dons.don">Don</span></dt>
+                <dt><span jhiTranslate="cultuelApp.articles.titre">Titre</span></dt>
                 <dd>
-                    <span>{{dons.don}}</span>
+                    <span>{{articles.titre}}</span>
                 </dd>
-                <dt><span jhiTranslate="cultuelApp.dons.dateDons">Date Dons</span></dt>
+                <dt><span jhiTranslate="cultuelApp.articles.date">Date</span></dt>
                 <dd>
-                    <span>{{dons.dateDons}}</span>
+                    <span>{{articles.date}}</span>
                 </dd>
-                <dt><span jhiTranslate="cultuelApp.dons.labelDon">Label Don</span></dt>
+                <dt><span jhiTranslate="cultuelApp.articles.message">Message</span></dt>
                 <dd>
-                    <span>{{dons.labelDon}}</span>
+                    <span>{{articles.message}}</span>
                 </dd>
-                <dt><span jhiTranslate="cultuelApp.dons.donsUser">Dons User</span></dt>
+                <dt><span jhiTranslate="cultuelApp.articles.user">User</span></dt>
                 <dd>
-                    {{dons.donsUserId}}
+                    {{articles.user?.login}}
                 </dd>
             </dl>
 
@@ -30,7 +30,7 @@
             </button>
 
             <button type="button"
-                    [routerLink]="['/dons', dons.id, 'edit']"
+                    [routerLink]="['/articles-true', articles.id, 'edit']"
                     class="btn btn-primary">
                 <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
             </button>

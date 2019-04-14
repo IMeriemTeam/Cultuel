@@ -1,0 +1,24 @@
+{
+    "cultuelApp": {
+        "articles": {
+            "home": {
+                "title": "Articles",
+                "createLabel": "Create a new Articles",
+                "createOrEditLabel": "Create or edit a Articles"
+            },
+            "created": "A new Articles is created with identifier {{ param }}",
+            "updated": "A Articles is updated with identifier {{ param }}",
+            "deleted": "A Articles is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Articles {{ id }}?"
+            },
+            "detail": {
+                "title": "Articles"
+            },
+            "titre": "Titre",
+            "date": "Date",
+            "message": "Message",
+            "user": "User"
+        }
+    }
+}
